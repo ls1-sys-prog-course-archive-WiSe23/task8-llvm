@@ -1,0 +1,84 @@
+{
+  "tests": [
+    {
+      "name": "Build",
+      "setup": "",
+      "run": "timeout -s KILL 6m make",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 6,
+      "points": null
+    },
+    {
+      "name": "Test dce simple",
+      "setup": "make dce",
+      "run": "python3 tests/dce/llvm-lit.py tests/dce/test-1.ll",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 3
+    },
+    {
+      "name": "Test dce cfg",
+      "setup": "make dce",
+      "run": "python3 tests/dce/llvm-lit.py tests/dce/test-2.ll",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 4
+    },
+    {
+      "name": "Test dce cfg + alloca",
+      "setup": "make dce",
+      "run": "python3 tests/dce/llvm-lit.py tests/dce/test-3.ll",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 4
+    },
+    {
+      "name": "Test memory-safety malloc",
+      "setup": "make memory-safety",
+      "run": "python3 tests/memory-safety/test-malloc.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 8
+    },
+    {
+      "name": "Test memory-safety use-after-free",
+      "setup": "make memory-safety",
+      "run": "python3 tests/memory-safety/test-use-after-free.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 3
+    },
+    {
+      "name": "Test memory-safety stack",
+      "setup": "make memory-safety",
+      "run": "python3 tests/memory-safety/test-stack.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 4,
+      "points": 3
+    },
+    {
+      "name": "Test memory-safety performance",
+      "setup": "make memory-safety",
+      "run": "python3 tests/memory-safety/test-performance.py",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": 5
+    }
+  ]
+}
